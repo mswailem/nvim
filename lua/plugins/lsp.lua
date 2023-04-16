@@ -17,9 +17,21 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>fd", function() vim.diagnostic.open_float() end, opts)
   vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<leader>d", function() vim.diagnostic.hide() end, opts)
 end)
 
 lsp.setup()
 vim.diagnostic.config({
 	virtual_text = true,
+})
+
+local cmp = require "cmp"
+cmp.setup({
+      ["<C-e>"] = function(fallback)
+        if cmp.visible() then
+          cmp.mapping.close()
+        else
+          cmp.mapping.complete()
+        end
+      end,
 })

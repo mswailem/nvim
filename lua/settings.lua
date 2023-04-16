@@ -16,7 +16,7 @@ opt.showcmd=true
 opt.autoindent=true
 opt.autowrite=true
 opt.shiftwidth=4
-vim.cmd("colorscheme alduin")
+vim.cmd("colorscheme gruvbox")
 vim.api.nvim_command(":highlight Normal ctermbg=none")
 vim.api.nvim_command(":highlight NonText ctermbg=none")
 vim.api.nvim_command(":highlight String ctermbg=none")

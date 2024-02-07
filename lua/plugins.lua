@@ -44,9 +44,10 @@ return require('packer').startup(function(use)
   }
   use 'preservim/nerdtree'
   use {'romgrk/barbar.nvim', requires = 'nvim-tree/nvim-web-devicons'}
-
+  use 'vimwiki/vimwiki'
   use 'rafi/awesome-vim-colorschemes'
   use "terrortylor/nvim-comment"
+  use 'lervag/vimtex'
 
   use 'junegunn/fzf'
   use { 'ibhagwan/fzf-lua', requires =  'nvim-tree/nvim-web-devicons' }

@@ -22,8 +22,14 @@ vim.cmd("colorscheme OceanicNext")
 opt.termguicolors = true
 
 --For transparency
---vim.api.nvim_command(":highlight Normal ctermbg=none")
---vim.api.nvim_command(":highlight NonText ctermbg=none")
---vim.api.nvim_command(":highlight String ctermbg=none")
---vim.api.nvim_command(":highlight LineNr ctermbg=none")
-vim.lsp.set_log_level("debug")
+-- vim.api.nvim_set_hl(0, "Normal", {bg = "NONE"})
+-- vim.api.nvim_set_hl(0, "NonText", {bg = "NONE"})
+-- vim.api.nvim_set_hl(0, "String", {bg = "NONE"})
+-- vim.api.nvim_set_hl(0, "LineNr", {bg = "NONE"})
+-- vim.api.nvim_set_hl(0, "EndOfBuffer", {bg = "NONE"})
+-- vim.api.nvim_set_hl(0, "NormalFloat", {bg = "NONE"})
+-- vim.api.nvim_set_hl(0, "FloatBorder", {bg = "NONE"})
+-- vim.api.nvim_set_hl(0, "IblScope", {fg = "NONE", bg = "NONE", italic = true})
+
+-- For slime
+vim.g.slime_target = "tmux"

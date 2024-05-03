@@ -14,9 +14,15 @@ return {
 	"junegunn/fzf",
 	{ "ibhagwan/fzf-lua", dependencies = "nvim-tree/nvim-web-devicons" },
 	{ "echasnovski/mini.nvim", version = false },
+	-- {
+	-- 	"GCBallesteros/jupytext.nvim",
+	-- 	config = true,
+	-- },
+	"christoomey/vim-tmux-navigator",
+	"voldikss/vim-mma",
+	"jpalardy/vim-slime",
 	{
 		"GCBallesteros/jupytext.nvim",
 		config = true,
-	},
-	"christoomey/vim-tmux-navigator",
+	}
 }

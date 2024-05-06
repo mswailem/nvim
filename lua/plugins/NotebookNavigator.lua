@@ -10,6 +10,10 @@ return {
 		{ "<leader>h", function() require("notebook-navigator").add_cell_below() end },
 		{ "<leader>H", function() require("notebook-navigator").add_cell_above() end },
 	},
+	opts = { cell_markers = {
+			python = "# %%",
+			cpp = "// %%",
+	}},
 	dependencies = { "jpalardy/vim-slime" },
 	event = "VeryLazy",
 }

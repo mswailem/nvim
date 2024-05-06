@@ -68,6 +68,24 @@ return {
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
+		-- disable diagnostics for C++ notebook files (disables diagnostics if file starts with // %%)
+		vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+			local bufnr = ctx.bufnr or vim.api.nvim_get_current_buf()
+
+			if not bufnr or bufnr < 1 then
+				return
+			end
+
+			-- Check if the first line of the file contains '// %%'
+			local first_line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)
+			if #first_line > 0 and first_line[1]:match("^// %%") then
+				result.diagnostics = {}
+			else
+			end
+
+			vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+		end
+
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }

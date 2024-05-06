@@ -47,3 +47,12 @@ augroup filetypes
   autocmd FileType python,ipython let b:slime_cell_delimiter = "# %%"
 augroup END
 ]], false)
+
+-- Set cell delimiter for C and C++ files
+vim.api.nvim_exec([[
+augroup filetypes
+  autocmd!
+  autocmd FileType cpp,c let b:slime_cell_delimiter = "// %%"
+augroup END
+]], false)
+

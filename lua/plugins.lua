@@ -22,6 +22,10 @@ return {
 	"voldikss/vim-mma",
 	"jpalardy/vim-slime",
 	{
+		'klafyvel/vim-slime-cells',
+		dependencies = 'jpalardy/vim-slime',
+	},
+	{
 		"GCBallesteros/jupytext.nvim",
 		config = true,
 	}

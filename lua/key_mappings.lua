@@ -18,3 +18,8 @@ map("n", "<leader>sq", "<cmd>close<CR>", { desc = "Close current split" }) -- cl
 
 --Terminal key mappings (might not need this if I will be using tmux)
 map("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, desc = "Exit terminal mode" })
+
+-- vim-slime keybindings
+vim.api.nvim_set_keymap('x', '<leader>r', '<Plug>SlimeRegionSend', { noremap = true, silent = true , desc = "Send selected region to kernel with tmux (default is pane 1)"})
+map("n", "<leader>r", "<Plug>SlimeSendCell", { noremap = true, silent = true, desc = "Send cell to kernel with tmux (default is pane 1)"})
+map("n", "<leader>R", "<Plug>SlimeCellsSendAndGoToNext", { noremap = true, silent = true, desc = "Send cell to kernel with tmux (default is pane 1) and go to next cell"})

@@ -81,9 +81,8 @@ return {
 			if #first_line > 0 and first_line[1]:match("^// %%") then
 				result.diagnostics = {}
 			else
+				vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
 			end
-
-			vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
 		end
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
@@ -93,6 +92,39 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
+
+		-- Helper function to find the CMakeLists.txt directory
+		local function find_project_root()
+			local cwd = vim.fn.getcwd()
+			local root_marker = 'CMakeLists.txt'
+			local project_root = vim.fn.findfile(root_marker, cwd .. ';')
+			if project_root == '' then
+				return nil
+			else
+				return vim.fn.fnamemodify(project_root, ':h')
+			end
+		end
+
+		-- Configure clangd
+		lspconfig.clangd.setup({
+			capabilities = capabilities,
+			on_new_config = function(new_config, new_root_dir)
+				local project_root = find_project_root()
+				if project_root then
+					new_config.cmd = {
+						"clangd",
+						"--compile-commands-dir=" .. project_root .. "/build"
+					}
+					new_config.root_dir = project_root
+				end
+			end,
+			-- Optional: specify other clangd settings here
+			settings = {
+				clangd = {
+					-- Add other clangd-specific settings here
+				}
+			}
+		})
 
 		mason_lspconfig.setup_handlers({
 			-- default handler for installed servers
@@ -121,3 +153,4 @@ return {
 		})
 	end,
 }
+

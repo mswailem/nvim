@@ -12,6 +12,7 @@ return {
 	},
 	"rafi/awesome-vim-colorschemes",
 	"junegunn/fzf",
+	"junegunn/fzf.vim",
 	{ "ibhagwan/fzf-lua", dependencies = "nvim-tree/nvim-web-devicons" },
 	{ "echasnovski/mini.nvim", version = false },
 	-- {

@@ -18,7 +18,7 @@ opt.autoindent = true
 opt.autowrite = true
 opt.shiftwidth = 4
 vim.opt.clipboard:append("unnamedplus")
-vim.cmd("colorscheme OceanicNext")
+vim.cmd("colorscheme deep-space")
 opt.termguicolors = true
 
 --For transparency
